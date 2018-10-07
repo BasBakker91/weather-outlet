@@ -1,0 +1,19 @@
+﻿@if (PlaceDetails != null)
+{
+    <div class="jumbotron">
+        <h1 class="display-4">@PlaceDetails.Name</h1>
+        <p class="lead">@PlaceDetails.Description</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="@PlaceDetails.WikipediaUrl" target="_blank" role="button">Learn more</a>
+    </div>
+}
+else
+{
+    <p>Oops! We couldn't find any detailed information for @Place</p>
+}
+
+
+@functions {
+    [Parameter] protected string Place { get; set; }
+    [Parameter] protected PlaceDetails PlaceDetails { get; set; }
+}

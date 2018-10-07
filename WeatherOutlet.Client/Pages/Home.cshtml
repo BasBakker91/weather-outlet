@@ -1,0 +1,37 @@
+﻿@page "/"
+@inherits AppStateAwareComponentBase
+
+<div class="row">
+    <div class="col-12">
+        <SearchInput OnSearch="State.Search" OnClearSearchHistory="State.ClearSearchHistory" SearchHistory="State.SearchHistory" />
+    </div>
+</div>
+
+<LoadingZone IsLoading="@State.SearchInProgress">
+    @if (State.PlaceData != null)
+    {
+        <div class="row pt-3 pm-1">
+            <div class="col-12">
+                <SearchResultWikiSegment PlaceDetails="State.PlaceData.PlaceDetails" Place="@State.PlaceData.Place" />
+            </div>
+        </div>
+        
+        <div class="row py-1">
+            <div class="col-12">
+                <SearchResultWeatherSegments WeatherForecast=State.PlaceData.WeatherForecast Place=@State.PlaceData.Place />
+            </div>
+        </div>
+
+        <div class="row pt-5 pb-2">
+            <div class="col-12">
+                <h2>News</h2>
+            </div>
+        </div>
+
+        <div class="row py-1">
+            <div class="col-12">
+                <SearchResultNewsSegments Articles="State.PlaceData.Articles" Place="@State.PlaceData.Place" />
+            </div>
+        </div>
+    }
+</LoadingZone>

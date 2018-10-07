@@ -1,0 +1,16 @@
+﻿@if (Articles != null && Articles.Any())
+{
+    foreach (var article in Articles)
+    {
+    <SearchResultNewsSegment Article="article" />
+    }
+}
+else
+{
+    <p>Oops! We couldn't find any news articles for @Place</p>
+}
+
+@functions {
+    [Parameter] protected List<Article> Articles { get; set; }
+    [Parameter] protected string Place { get; set; }
+}

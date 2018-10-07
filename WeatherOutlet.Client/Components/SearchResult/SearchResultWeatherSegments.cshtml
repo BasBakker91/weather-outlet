@@ -1,0 +1,19 @@
+﻿@if (WeatherForecast != null)
+{
+    <div class="card-deck">
+        @foreach (var weatherForecast in WeatherForecast.List)
+        {
+            <SearchResultWeatherSegment Forecast=weatherForecast />
+        }
+    </div>
+}
+else
+{
+    <p>Oops! We couldn't find any weather information for @Place</p>
+}
+
+
+@functions {
+    [Parameter] protected string Place { get; set; }
+    [Parameter] protected WeatherForecast WeatherForecast { get; set; }
+}

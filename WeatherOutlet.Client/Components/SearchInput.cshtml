@@ -1,0 +1,47 @@
+﻿@using BlazorElement
+@inherits AppStateAwareComponentBase
+
+<div class="input-group">
+    <input ref="searchInput" list="searchHistory" class="form-control" placeholder="Amsterdam" onkeyup=@OnKeyUp bind=criteria.Place />
+
+    <div class="input-group-append">
+        <button class="btn btn-secondary" onclick=@(() => OnSearch(criteria)) type="button">
+            <i class="fa fa-search"></i>
+        </button>
+        <button class="btn btn-danger"  onclick="@OnClearSearchHistory" title="Tooltip on bottom">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>
+</div>
+<SearchHistoryDataList SearchHistory="SearchHistory"/>
+
+
+@functions {
+
+    [Parameter] Func<SearchCriteria, Task> OnSearch { get; set; }
+    [Parameter] Action OnClearSearchHistory { get; set; }
+    [Parameter] List<string> SearchHistory { get; set; }
+
+    private SearchCriteria criteria = new SearchCriteria();
+
+    private bool firstRender = true;
+    private ElementRef searchInput;
+
+    protected override async Task OnAfterRenderAsync()
+    {
+        if(firstRender)
+        {
+            firstRender = false;
+            await searchInput.Focus();
+        }
+    }
+
+    async Task OnKeyUp(UIKeyboardEventArgs args)
+    {
+        if (args?.Key?.CompareTo("Enter") == 0)
+        {
+            await searchInput.Blur();
+            await OnSearch?.Invoke(criteria);
+        }
+    }
+}

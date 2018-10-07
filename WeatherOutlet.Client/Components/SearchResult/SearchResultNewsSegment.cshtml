@@ -1,0 +1,21 @@
+﻿@if (Article != null)
+{
+    <div class="card my-2">
+        <div class="card-header">@Article.Title</div>
+        <div class="card-body">
+            <p class="card-text">@Article.Description</p>
+            @if (Article.Url != null)
+            {
+                <a class="btn btn-primary btn-lg pull-right" href="@Article.Url" target="_blank" role="button">Learn more</a>
+            }
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Published: @Article.PublishedAt.LocalDateTime.ToShortDateString()</small>
+            <small class="text-muted pull-right">@Article.Source.Name</small>
+        </div>
+    </div>
+}
+
+@functions {
+    [Parameter] protected Article Article { get; set; }
+}

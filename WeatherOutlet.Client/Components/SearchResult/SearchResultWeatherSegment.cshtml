@@ -1,0 +1,16 @@
+﻿
+<div class="card">
+    <img class="card-img-top" src="/images/weatherIcons/@Forecast.Weather.FirstOrDefault().ImagePath">
+
+    <div class="card-body">
+        <p class="font-weight-bold">@Forecast.DayOfWeek</p>
+        <p class="card-text">
+            Max: @(Forecast.Temp.MaximumDisplay) <br />
+            <small>Min: @(Forecast.Temp.MinimalDisplay)</small>
+        </p>
+    </div>
+</div>
+
+@functions {
+    [Parameter] protected Forecast Forecast { get; set; }
+}

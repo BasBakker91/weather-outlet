@@ -1,0 +1,10 @@
+﻿<datalist id="searchHistory">
+    @foreach (var searchHistory in SearchHistory)
+    {
+        <option value=@searchHistory>@searchHistory</option>
+    }
+</datalist>
+
+@functions {
+    [Parameter] protected List<string> SearchHistory { get; set; }
+}
