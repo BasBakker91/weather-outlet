@@ -2,14 +2,17 @@ using Microsoft.AspNetCore.Blazor.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using System;
 using System.Linq;
 using System.Net.Mime;
 using WeatherOutlet.ApiClients.News;
 using WeatherOutlet.ApiClients.OpenWeather;
 using WeatherOutlet.ApiClients.Wiki;
+using WeatherOutlet.Data;
 using WeatherOutlet.Server.Settings;
 
 namespace WeatherOutlet.Server
@@ -64,6 +67,10 @@ namespace WeatherOutlet.Server
 
             services.AddHttpClient();
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+
             services.AddResponseCompression(options =>
             {
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
@@ -76,6 +83,17 @@ namespace WeatherOutlet.Server
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    serviceScope.ServiceProvider.GetService<ApplicationDbContext>().Database.Migrate();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
             app.UseResponseCompression();
 
             if (env.IsDevelopment())

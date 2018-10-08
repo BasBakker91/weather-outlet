@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WeatherOutlet.ApiClients\WeatherOutlet.ApiClients.csproj" />
     <ProjectReference Include="..\WeatherOutlet.Client\WeatherOutlet.Client.csproj" />
+    <ProjectReference Include="..\WeatherOutlet.Data\WeatherOutlet.Data.csproj" />
     <ProjectReference Include="..\WeatherOutlet.Shared\WeatherOutlet.Shared.csproj" />
   </ItemGroup>
 
