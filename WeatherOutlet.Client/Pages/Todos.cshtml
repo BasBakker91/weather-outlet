@@ -1,0 +1,36 @@
+﻿@page "/todos"
+@inherits AppStateAwareComponentBase
+
+<div class="row">
+    <h2>Todos</h2>
+</div>
+
+<LoadingZone IsLoading="@State.SearchInProgress">
+    <div class="row mt-3">
+        <div class="col-12">
+            <h3>In progress</h3>
+        </div>
+    </div>
+        @foreach (var todo in State.Todos.Where(i => i.IsCompleted == false).OrderBy(i => i.CreatedAt).ToList())
+        {
+            <TodoSegment Todo=todo OnMarkAsCompleted=State.OnMarkTodoAsCompleted />
+        }
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <h3>Completed</h3>
+            </div>
+        </div>
+        @foreach (var todo in State.Todos.Where(i => i.IsCompleted).OrderBy(i => i.CreatedAt).ToList())
+        {
+            <TodoSegment Todo=todo OnMarkAsCompleted=State.OnMarkTodoAsCompleted />
+        }
+</LoadingZone>
+
+@functions
+{ 
+    protected override async Task OnInitAsync()
+    {
+        await State.LoadTodos();
+    }
+}
