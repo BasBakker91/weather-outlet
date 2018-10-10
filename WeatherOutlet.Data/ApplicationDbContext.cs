@@ -54,12 +54,12 @@ namespace WeatherOutlet.Data
                 new TodoItem
                 {
                     Id = 4,
-                    Name = "Add tests",
-                    Description = "Add loads of tests!",
+                    Name = "Add more tests",
+                    Description = "Add loads of more tests!",
                     CreatedAt = DateTime.Now.AddDays(-1).AddHours(-1),
                     CompletedAt = null,
                     IsCompleted = false
-                },
+                }
             };
         }
     }

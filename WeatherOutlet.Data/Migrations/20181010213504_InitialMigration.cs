@@ -30,10 +30,10 @@ namespace WeatherOutlet.Data.Migrations
                 columns: new[] { "Id", "CompletedAt", "CreatedAt", "Description", "IsCompleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2018, 10, 8, 21, 56, 34, 321, DateTimeKind.Local), new DateTime(2018, 10, 7, 17, 56, 34, 320, DateTimeKind.Local), "Create a todo context persist your todos", true, "Create Todo dbcontext" },
-                    { 2, new DateTime(2018, 10, 8, 23, 56, 34, 321, DateTimeKind.Local), new DateTime(2018, 10, 7, 19, 56, 34, 321, DateTimeKind.Local), "Create a service to perform CRUD operations on the database", true, "Create Todo Service" },
-                    { 3, null, new DateTime(2018, 10, 7, 21, 56, 34, 321, DateTimeKind.Local), "Create base classes voor EntityService classes to make your live easier in the long run!", false, "Make base class for Service classes" },
-                    { 4, null, new DateTime(2018, 10, 7, 21, 56, 34, 321, DateTimeKind.Local), "Add loads of tests!", false, "Add tests" }
+                    { 1, new DateTime(2018, 10, 10, 22, 35, 4, 799, DateTimeKind.Local), new DateTime(2018, 10, 9, 18, 35, 4, 798, DateTimeKind.Local), "Create a todo context persist your todos", true, "Create Todo dbcontext" },
+                    { 2, new DateTime(2018, 10, 11, 0, 35, 4, 799, DateTimeKind.Local), new DateTime(2018, 10, 9, 20, 35, 4, 799, DateTimeKind.Local), "Create a service to perform CRUD operations on the database", true, "Create Todo Service" },
+                    { 3, null, new DateTime(2018, 10, 9, 22, 35, 4, 799, DateTimeKind.Local), "Create base classes voor EntityService classes to make your live easier in the long run!", false, "Make base class for Service classes" },
+                    { 4, null, new DateTime(2018, 10, 9, 22, 35, 4, 799, DateTimeKind.Local), "Add loads of more tests!", false, "Add more tests" }
                 });
         }
 

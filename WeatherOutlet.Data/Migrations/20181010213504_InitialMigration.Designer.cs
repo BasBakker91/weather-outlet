@@ -10,7 +10,7 @@ using WeatherOutlet.Data;
 namespace WeatherOutlet.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181008205634_InitialMigration")]
+    [Migration("20181010213504_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,10 +44,10 @@ namespace WeatherOutlet.Data.Migrations
                     b.ToTable("Todos");
 
                     b.HasData(
-                        new { Id = 1, CompletedAt = new DateTime(2018, 10, 8, 21, 56, 34, 321, DateTimeKind.Local), CreatedAt = new DateTime(2018, 10, 7, 17, 56, 34, 320, DateTimeKind.Local), Description = "Create a todo context persist your todos", IsCompleted = true, Name = "Create Todo dbcontext" },
-                        new { Id = 2, CompletedAt = new DateTime(2018, 10, 8, 23, 56, 34, 321, DateTimeKind.Local), CreatedAt = new DateTime(2018, 10, 7, 19, 56, 34, 321, DateTimeKind.Local), Description = "Create a service to perform CRUD operations on the database", IsCompleted = true, Name = "Create Todo Service" },
-                        new { Id = 3, CreatedAt = new DateTime(2018, 10, 7, 21, 56, 34, 321, DateTimeKind.Local), Description = "Create base classes voor EntityService classes to make your live easier in the long run!", IsCompleted = false, Name = "Make base class for Service classes" },
-                        new { Id = 4, CreatedAt = new DateTime(2018, 10, 7, 21, 56, 34, 321, DateTimeKind.Local), Description = "Add loads of tests!", IsCompleted = false, Name = "Add tests" }
+                        new { Id = 1, CompletedAt = new DateTime(2018, 10, 10, 22, 35, 4, 799, DateTimeKind.Local), CreatedAt = new DateTime(2018, 10, 9, 18, 35, 4, 798, DateTimeKind.Local), Description = "Create a todo context persist your todos", IsCompleted = true, Name = "Create Todo dbcontext" },
+                        new { Id = 2, CompletedAt = new DateTime(2018, 10, 11, 0, 35, 4, 799, DateTimeKind.Local), CreatedAt = new DateTime(2018, 10, 9, 20, 35, 4, 799, DateTimeKind.Local), Description = "Create a service to perform CRUD operations on the database", IsCompleted = true, Name = "Create Todo Service" },
+                        new { Id = 3, CreatedAt = new DateTime(2018, 10, 9, 22, 35, 4, 799, DateTimeKind.Local), Description = "Create base classes voor EntityService classes to make your live easier in the long run!", IsCompleted = false, Name = "Make base class for Service classes" },
+                        new { Id = 4, CreatedAt = new DateTime(2018, 10, 9, 22, 35, 4, 799, DateTimeKind.Local), Description = "Add loads of more tests!", IsCompleted = false, Name = "Add more tests" }
                     );
                 });
 #pragma warning restore 612, 618

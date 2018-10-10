@@ -13,6 +13,7 @@ using WeatherOutlet.ApiClients.News;
 using WeatherOutlet.ApiClients.OpenWeather;
 using WeatherOutlet.ApiClients.Wiki;
 using WeatherOutlet.Data;
+using WeatherOutlet.Data.Services;
 using WeatherOutlet.Server.Settings;
 
 namespace WeatherOutlet.Server
@@ -47,6 +48,8 @@ namespace WeatherOutlet.Server
             var openWeatherConfig = openWeatherConfigurationSection.Get<OpenWeatherSettings>();
             var newsConfig = newsConfigurationSection.Get<NewsSettings>();
 
+            services.AddScoped<ITodoService, TodoService>();
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -70,6 +73,7 @@ namespace WeatherOutlet.Server
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
+
 
             services.AddResponseCompression(options =>
             {

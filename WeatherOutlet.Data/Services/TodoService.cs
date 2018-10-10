@@ -8,7 +8,7 @@ using WeatherOutlet.Data.Models;
 
 namespace WeatherOutlet.Data.Services
 {
-    public class TodoService
+    public class TodoService : ITodoService
     {
         private readonly ApplicationDbContext context;
 
