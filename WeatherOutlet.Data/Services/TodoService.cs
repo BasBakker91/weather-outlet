@@ -19,7 +19,7 @@ namespace WeatherOutlet.Data.Services
 
         public async Task<TodoItem> Find(int Id)
         {
-            return await context.Todos.FindAsync(Id);
+            return await context.Todos.FirstOrDefaultAsync(i => i.Id == Id);
         }
 
         public async Task<List<TodoItem>> FindAll()

@@ -21,10 +21,15 @@ namespace WeatherOutlet.ApiClients.Wiki
             
         }
 
+        public WikiApiClient() : base(new HttpClient())
+        {
+
+        }
+
         /// <summary>
         /// Returns the first wikipedia article that matches the keyword
         /// </summary>
-        public async Task<ApiResponse<WikiResult>> GetWikiDetailsAsync(string keyword)
+        public virtual async Task<ApiResponse<WikiResult>> GetWikiDetailsAsync(string keyword)
         {
             try
             {
@@ -37,13 +42,10 @@ namespace WeatherOutlet.ApiClients.Wiki
                 var uri = $"w/api.php?action=opensearch&search={keyword}&limit=1&format=json";
 
                 var result = await GetAsync<JArray>(uri);
-
-                if (result == null || !result.Content.Any())
-                    return null;
-
+                
                 var wikiResult = ExtractWikiResult(result.Content);
-
-                return new ApiResponse<WikiResult>(result.StatusCode, wikiResult);
+                
+                return new ApiResponse<WikiResult>(wikiResult == null ? System.Net.HttpStatusCode.NotFound : result.StatusCode, wikiResult);
             }
             catch(ApiException apiException)
             {

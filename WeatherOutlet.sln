@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorElement", "BlazorElem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherOutlet.ApiClients", "WeatherOutlet.ApiClients\WeatherOutlet.ApiClients.csproj", "{7121FD80-E6E0-42A0-9013-5AA720CFA9E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherOutlet.Data", "WeatherOutlet.Data\WeatherOutlet.Data.csproj", "{E1A0E008-E510-45BA-B604-F2F198957190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherOutlet.Data", "WeatherOutlet.Data\WeatherOutlet.Data.csproj", "{E1A0E008-E510-45BA-B604-F2F198957190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherOutlet.Data.Tests", "WeatherOutlet.Data.Tests\WeatherOutlet.Data.Tests.csproj", "{1738879A-B4EC-4967-8CBB-9E7D58A4812C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherOutlet.ApiClients.IntegrationTests", "WeatherOutlet.ApiClients.IntegrationTests\WeatherOutlet.ApiClients.IntegrationTests.csproj", "{AB814481-6B6F-40D4-BA4F-804375325901}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherOutlet.Server.Tests", "WeatherOutlet.Server.Tests\WeatherOutlet.Server.Tests.csproj", "{24FDA4A4-7060-435C-BC8B-141737F04D78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{E1A0E008-E510-45BA-B604-F2F198957190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A0E008-E510-45BA-B604-F2F198957190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A0E008-E510-45BA-B604-F2F198957190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1738879A-B4EC-4967-8CBB-9E7D58A4812C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1738879A-B4EC-4967-8CBB-9E7D58A4812C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1738879A-B4EC-4967-8CBB-9E7D58A4812C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1738879A-B4EC-4967-8CBB-9E7D58A4812C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB814481-6B6F-40D4-BA4F-804375325901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB814481-6B6F-40D4-BA4F-804375325901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB814481-6B6F-40D4-BA4F-804375325901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB814481-6B6F-40D4-BA4F-804375325901}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24FDA4A4-7060-435C-BC8B-141737F04D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FDA4A4-7060-435C-BC8B-141737F04D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FDA4A4-7060-435C-BC8B-141737F04D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FDA4A4-7060-435C-BC8B-141737F04D78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

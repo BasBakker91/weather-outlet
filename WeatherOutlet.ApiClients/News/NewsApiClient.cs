@@ -21,12 +21,17 @@ namespace WeatherOutlet.ApiClients.News
             this.newsApiClientConfig = newsApiClientConfig;
         }
 
+        public NewsApiClient() : base(new HttpClient())
+        {
+
+        }
+
         /// <summary>
         /// Gets the top 20 news articles containing the keyword
         /// </summary>
         /// <param name="keyword">A keyword that the news articles must contain</param>
         /// <returns>List of found news articles</returns>
-        public async Task<ApiResponse<NewsResult>> GetNewsAsync(string keyword)
+        public virtual async Task<ApiResponse<NewsResult>> GetNewsAsync(string keyword)
         {
             try
             {

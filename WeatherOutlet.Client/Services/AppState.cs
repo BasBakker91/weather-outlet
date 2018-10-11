@@ -15,6 +15,7 @@ namespace WeatherOutlet.Client.Services
     {
         private readonly LocalStorage localStorage;
         private readonly IToaster toaster;
+        private readonly HttpClient httpClient;
 
         public List<string> SearchHistory { get; set; }
 
@@ -22,7 +23,6 @@ namespace WeatherOutlet.Client.Services
         public List<TodoItem> Todos { get; set; }
 
         public bool SearchInProgress { get; private set; }
-        public HttpClient http { get; }
 
         public event Action OnAppStateChanged;
         public delegate Task OnMarkTodoAsCompletedHandler(TodoItem todoItem);
@@ -31,7 +31,7 @@ namespace WeatherOutlet.Client.Services
         {
             this.localStorage = localStorage;
             this.toaster = toaster;
-            http = httpClient;
+            this.httpClient = httpClient;
             GetSearchHistory();
         }
 
@@ -40,7 +40,7 @@ namespace WeatherOutlet.Client.Services
             SearchInProgress = true;
             NotifyStateChanged();
 
-            Todos = await http.GetJsonAsync<List<TodoItem>>($"/api/todos");
+            Todos = await httpClient.GetJsonAsync<List<TodoItem>>($"/api/todos");
 
             SearchInProgress = false;
             NotifyStateChanged();
@@ -51,7 +51,7 @@ namespace WeatherOutlet.Client.Services
             todoItem.IsCompleted = true;
             todoItem.CompletedAt = DateTime.Now;
 
-            await http.PutJsonAsync<TodoItem>($"/api/todos/{todoItem.Id}", todoItem);
+            await httpClient.PutJsonAsync<TodoItem>($"/api/todos/{todoItem.Id}", todoItem);
             await LoadTodos();
         }
 
@@ -62,7 +62,7 @@ namespace WeatherOutlet.Client.Services
 
             InsertPlaceIntoSearchHistoryIfNotExist(searchCriteria.Place);
 
-            PlaceData = await http.GetJsonAsync<PlaceData>($"/api/places/{searchCriteria.Place}");
+            PlaceData = await httpClient.GetJsonAsync<PlaceData>($"/api/places/{searchCriteria.Place}");
 
             SearchInProgress = false;
             NotifyStateChanged();

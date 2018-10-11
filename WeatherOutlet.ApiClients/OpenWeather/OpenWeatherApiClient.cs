@@ -25,12 +25,17 @@ namespace WeatherOutlet.ApiClients.OpenWeather
                 throw new InvalidOperationException("Can not use openWeather api without an appId");
         }
 
+        public OpenWeatherApiClient() : base(new HttpClient())
+        {
+
+        }
+
         /// <summary>
         /// Gets the weather forecast for a certain location.
         /// </summary>
         /// <param name="location">Location has to match the city exactly.</param>
         /// <returns></returns>
-        public async Task<ApiResponse<WeatherForecast>> GetWeatherForecastAsync(string location)
+        public virtual async Task<ApiResponse<WeatherForecast>> GetWeatherForecastAsync(string location)
         {
             try
             {

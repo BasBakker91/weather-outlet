@@ -6,11 +6,16 @@ using WeatherOutlet.Data.Models;
 
 namespace WeatherOutlet.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        public DbSet<TodoItem> Todos { get; set; }
+        public virtual DbSet<TodoItem> Todos { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+
+        }
+
+        public ApplicationDbContext()
         {
 
         }
@@ -20,7 +25,7 @@ namespace WeatherOutlet.Data
             modelBuilder.Entity<TodoItem>().HasData(GetDefaultTodoItems());
         }
 
-        private TodoItem[] GetDefaultTodoItems()
+        public static TodoItem[] GetDefaultTodoItems()
         {
             return new TodoItem[]
             {
