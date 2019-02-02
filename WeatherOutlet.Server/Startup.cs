@@ -50,10 +50,8 @@ namespace WeatherOutlet.Server
 
             services.AddScoped<ITodoService, TodoService>();
 
-            services.AddMvc().AddJsonOptions(options =>
-            {
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            });
+            services.AddMvcCore()
+                .AddJsonFormatters();
 
             services.AddOpenWeatherApiClient(new OpenWeatherApiConfig()
             {
